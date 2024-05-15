@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Peliculas</title>
+<link rel="stylesheet" href="#" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/all.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/index.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Peliculas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Director</th>
+                    <th>Género</th>
+                    <th>Duración</th>
+                    <th>Clasificación</th>
+                    <th>Sinopsis</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pelicula : ${peliculas}">
+                    <td th:text="${pelicula.titulo}"></td>
+                    <td th:text="${pelicula.director}"></td>
+                    <td th:text="${pelicula.genero}"></td>
+                    <td th:text="${pelicula.duración}"></td>
+                    <td th:text="${pelicula.clasificación}"></td>
+                    <td th:text="${pelicula.sinopsis}"></td>
+                    <td>
+                        <a th:href="@{/pelicula/edit/{id}(id=${pelicula.id})}">Editar</a>
+                        <a th:href="@{/pelicula/delete/{id}(id=${pelicula.id})}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/pelicula/crear}">Crear Nueva Película</a>
+    </div>
+</body>
+</html>
